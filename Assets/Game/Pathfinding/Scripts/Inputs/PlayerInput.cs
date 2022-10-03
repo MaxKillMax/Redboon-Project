@@ -6,7 +6,7 @@ namespace RedboonTestProject.Pathfinding
     public class PlayerInput : MonoBehaviour, IInput
     {
         [SerializeField] private DotFactory _dotFactory;
-        [SerializeField] private Edge[] _edges;
+        [SerializeField] private GridData _gridData;
 
         private readonly WavePathFinder _wavePathFinder = new();
 
@@ -22,28 +22,23 @@ namespace RedboonTestProject.Pathfinding
         public void CheckInput()
         {
             if (Input.GetMouseButtonDown(0))
-                SetDot();
+                TrySetDot();
         }
 
-        private void SetDot()
+        private void TrySetDot()
         {
-            if (_startDot == null)
-            {
-                _startDot = CreateDot(Camera.main.ScreenToWorldPoint(Input.mousePosition), true);
-            }
-            else if (_endDot == null)
-            {
-                _endDot = CreateDot(Camera.main.ScreenToWorldPoint(Input.mousePosition), true);
-                SetPath();
-            }
-            else
-            {
-                Destroy(_startDot.gameObject);
-                Destroy(_endDot.gameObject);
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 intPosition = RoundVector3(mouseWorldPosition);
 
-                for (int i = 0; i < _dots.Length; i++)
-                    Destroy(_dots[i].gameObject);
-            }
+            if (_startDot == null)
+                _startDot = CreateDot(intPosition, true);
+            else if (_endDot == null)
+                _endDot = CreateDot(intPosition, true);
+            else
+                DestroyDots();
+
+            if (_startDot && _endDot)
+                SetPath();
         }
 
         private Dot CreateDot(Vector3 position, bool deactivate)
@@ -56,14 +51,26 @@ namespace RedboonTestProject.Pathfinding
 
         private void SetPath()
         {
-            Vector2[] dotPositions = _wavePathFinder.GetPath(_startDot.transform.position, _endDot.transform.position, _edges.AsEnumerable()).ToArray();
+            Debug.Log(_wavePathFinder.GetPath(_startDot.transform.position, _endDot.transform.position, _gridData.Edges.AsEnumerable()).ToArray());
+            Vector2[] dotPositions = _wavePathFinder.GetPath(_startDot.transform.position, _endDot.transform.position, _gridData.Edges.AsEnumerable()).ToArray();
             _dots = new Dot[dotPositions.Length];
 
             for (int i = 0; i < _dots.Length; i++)
-                _dots[i] = CreateDot(dotPositions[i], false);
+                _dots[i] = CreateDot(RoundVector3(dotPositions[i]), false);
 
             _startDot.gameObject.SetActive(true);
             _endDot.gameObject.SetActive(true);
         }
+
+        private void DestroyDots()
+        {
+            Destroy(_startDot.gameObject);
+            Destroy(_endDot.gameObject);
+
+            for (int i = 0; i < _dots.Length; i++)
+                Destroy(_dots[i].gameObject);
+        }
+
+        private Vector3 RoundVector3(Vector3 vector) => new(Mathf.RoundToInt(vector.x), Mathf.RoundToInt(vector.y), Mathf.RoundToInt(vector.z));
     }
 }

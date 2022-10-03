@@ -4,11 +4,12 @@ namespace RedboonTestProject
 {
     public abstract class Window : MonoBehaviour
     {
-        public virtual WindowState State { get; private set; } = WindowState.Closed;
+        [SerializeField] private WindowState _startState = WindowState.Closed;
+        public virtual WindowState State { get; private set; }
 
         public virtual void Initialize()
         {
-            Switch(State);
+            Switch(_startState);
         }
 
         public virtual void Switch(WindowState state)

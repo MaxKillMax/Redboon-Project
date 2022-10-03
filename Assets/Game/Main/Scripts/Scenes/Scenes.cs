@@ -12,7 +12,7 @@ namespace RedboonTestProject
             foreach(SceneData sceneData in _sceneDatas)
             {
                 if (sceneData.Type == type)
-                    SceneManager.LoadSceneAsync(sceneData.Scene.buildIndex);
+                    SceneManager.LoadSceneAsync(sceneData.Scene);
             }    
         }
     }

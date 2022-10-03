@@ -7,8 +7,8 @@ namespace RedboonTestProject
     [Serializable]
     public struct SceneData
     {
-        [SerializeField] private Scene _scene;
-        public Scene Scene => _scene;
+        [SerializeField] private string _scene;
+        public string Scene => _scene;
 
         [SerializeField] private SceneType _type;
         public SceneType Type => _type;
