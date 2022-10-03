@@ -10,7 +10,7 @@ namespace RedboonTestProject.Store
 
         private void Awake()
         {
-            Wallet = new Wallet(_startMoney);
+            Wallet = new(_startMoney);
         }
     }
 }
