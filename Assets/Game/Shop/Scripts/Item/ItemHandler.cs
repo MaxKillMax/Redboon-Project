@@ -12,7 +12,7 @@ namespace RedboonTestProject.Store
         public void Initialize(Hand hand, ItemData itemData)
         {
             _hand = hand;
-            Item = new(itemData.Cost);
+            Item = new Item(itemData.Cost);
         }
 
         public void OnPointerDown(PointerEventData eventData)

@@ -4,7 +4,7 @@ namespace RedboonTestProject.Store
 {
     public class HandHandler : MonoBehaviour, IHandler
     {
-        public Hand Hand { get; private set; } = new(Camera.main);
+        public Hand Hand { get; private set; } = new Hand(Camera.main);
 
         private void Update()
         {
