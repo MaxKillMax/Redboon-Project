@@ -22,7 +22,7 @@ namespace RedboonTestProject
 
         private void StartShopScene()
         {
-            Scenes.Instance.SetScene(SceneType.Shop);
+            Scenes.Instance.SetScene(SceneType.Store);
         }
 
         private void StartPathFindingScene()

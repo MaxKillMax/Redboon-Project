@@ -3,7 +3,7 @@
     public enum SceneType
     {
         Menu,
-        Shop,
+        Store,
         PathFinding
     }
 }

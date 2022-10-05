@@ -421,7 +421,7 @@ MonoBehaviour:
   _sceneDatas:
   - _scene: Menu
     _type: 0
-  - _scene: Shop
+  - _scene: Store
     _type: 1
   - _scene: PathFinding
     _type: 2

@@ -18,13 +18,8 @@ namespace RedboonTestProject
             }
             else
             {
-                throw new System.Exception($"Instance of singleton {nameof(T)} is not null");
+                Destroy(gameObject);
             }
-        }
-
-        protected virtual void OnDestroy()
-        {
-            Instance = null;
         }
     }
 }
