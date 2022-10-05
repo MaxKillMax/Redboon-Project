@@ -40,7 +40,7 @@ namespace RedboonTestProject.Store
 
         private void UpdatePanel()
         {
-            _moneyText.text = _wallet.Money.ToString("N0");
+            _moneyText.text = _wallet.Money.ToString();
         }
     }
 }
