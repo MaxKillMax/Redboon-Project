@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff4272b91da01241bc92e9cdf42845f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dotPrefab: {fileID: 5074573476016126398, guid: 4f6e86805d3235348a01ca66d716abe2, type: 3}
+  _prefab: {fileID: 5074573476016126398, guid: 4f6e86805d3235348a01ca66d716abe2, type: 3}
   _parent: {fileID: 1657124958}
 --- !u!4 &731746846
 Transform:
@@ -776,7 +776,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.30980393, g: 0.30980393, b: 0.30980393, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

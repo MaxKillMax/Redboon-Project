@@ -1,19 +1,24 @@
 using UnityEngine;
 using NaughtyAttributes;
+using System;
 
 namespace RedboonTestProject.Pathfinding
 {
-    public class RectangleHandler : MonoBehaviour, IHandler
+    public class RectangleHandler : MonoBehaviour, IHandler<Rectangle>
     {
+        public event Action OnHandableObjectInitialized;
+
         [SerializeField] private SpriteRenderer _sprite;
 
         [SerializeField, ReadOnly] private Rectangle _rectangle;
-        public Rectangle Rectangle => _rectangle;
+
+        public Rectangle HandableObject => _rectangle;
 
         private void Awake()
         {
-            float random = Random.Range(0.5f, 1.0f);
+            float random = UnityEngine.Random.Range(0.5f, 1.0f);
             _sprite.color = new Color(random, random, random);
+            OnHandableObjectInitialized?.Invoke();
         }
 
         [Button("Update rectangle")]

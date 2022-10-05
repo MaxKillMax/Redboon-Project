@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using System.IO;
 
 namespace RedboonTestProject.Pathfinding
 {
@@ -28,7 +27,7 @@ namespace RedboonTestProject.Pathfinding
             _edges.Capacity = _edgeHandlers.Length;
 
             for (int i = 0; i < _edgeHandlers.Length; i++)
-                _edges.Add(_edgeHandlers[i].Edge);
+                _edges.Add(_edgeHandlers[i].HandableObject);
         }
 
         private void Update()
